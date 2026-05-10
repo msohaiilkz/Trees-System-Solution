@@ -212,15 +212,17 @@ window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
     const backToTop = document.querySelector('.back-to-top');
 
+    if (!header || !logo || !nav) return;
+
     if (window.scrollY > 100) {
         header.style.boxShadow = "var(--shadow)";
         nav.style.height = "75px";
-        logo.style.fontSize = "24px";
+        logo.classList.add('is-compact');
         if (backToTop) backToTop.classList.add('active');
     } else {
         header.style.boxShadow = "none";
         nav.style.height = "95px";
-        logo.style.fontSize = "32px";
+        logo.classList.remove('is-compact');
         if (backToTop) backToTop.classList.remove('active');
     }
 });
