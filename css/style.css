@@ -1751,6 +1751,292 @@ body:hover .cursor-dot, body:hover .cursor-outline {
         font-size: 20px !important;
     }
 }
-        padding: 0 10px !important;
-    }
+
+/* =====================================================
+   GLOBAL RESPONSIVE OVERRIDES (handles inline styles)
+   ===================================================== */
+img { max-width: 100%; height: auto; }
+
+/* Tablet & below */
+@media (max-width: 991px) {
+    /* About page hero grid */
+    .about-wrapper[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+    /* Service detail page grid */
+    .service-details-section .container > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 30px !important; }
+    /* Service row in about page */
+    .service-row[style*="grid-template-columns"] { grid-template-columns: 80px 1fr !important; gap: 20px !important; }
+    .service-row > div:last-child { grid-column: 1 / -1; text-align: left !important; }
+    /* Contact wrapper */
+    .contact-wrapper { grid-template-columns: 1fr !important; gap: 30px !important; }
+    /* Section padding */
+    .section-padding { padding: 60px 0 !important; }
+    /* Headings */
+    h1[style*="font-size: 72px"] { font-size: 42px !important; letter-spacing: -1px !important; }
+    h2[style*="font-size: 36px"] { font-size: 28px !important; }
+    /* Footer grid */
+    .footer-grid { gap: 40px !important; margin-bottom: 50px !important; }
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Top bar — stack contents */
+    .top-bar .container { flex-direction: column; gap: 8px; padding-top: 6px; padding-bottom: 6px; }
+    .top-info { display: flex; flex-direction: column; gap: 4px; text-align: center; }
+    .top-info span { font-size: 12px; }
+    /* Nav stays via hamburger */
+    /* Page headers */
+    .page-header { padding: 100px 0 60px !important; }
+    .page-header h1 { font-size: 32px !important; }
+    /* Service detail content */
+    .service-main-content h2 { font-size: 24px !important; }
+    .service-main-content p { font-size: 15px !important; }
+    /* Hero */
+    .hero { padding: 100px 0 60px; }
+    .hero .container { grid-template-columns: 1fr; gap: 30px; }
+    .hero-content h1 { font-size: 32px; }
+    /* About wrapper inline grid */
+    div.about-wrapper > div[style*="position: absolute"] { position: static !important; margin-top: 20px !important; }
+    /* Service row */
+    .service-row[style*="grid-template-columns"] { grid-template-columns: 1fr !important; padding: 25px !important; text-align: center; }
+    .service-row > div:first-child { margin: 0 auto; }
+    /* Team grid */
+    .team-grid, .team-profiles { gap: 25px !important; }
+    /* Counter grid */
+    .counter-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px !important; }
+    /* Contact info cards */
+    .contact-info-cards { gap: 15px !important; }
+    /* CTA banner */
+    .cta-banner h2 { font-size: 24px !important; }
+    /* Testimonials grid */
+    .testi-grid { grid-template-columns: 1fr !important; }
+    /* Modern contact form */
+    .modern-contact-form { padding: 25px !important; }
+    .modern-contact-form h2 { font-size: 22px !important; }
+    /* Footer grid */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; margin-bottom: 40px !important; }
+    /* Service sidebar */
+    .service-sidebar > div { padding: 25px !important; }
+    /* Brochures download */
+    /* Page headers in about */
+    section.page-header h1 { font-size: 36px !important; letter-spacing: -1px !important; }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .page-header h1 { font-size: 26px !important; }
+    .hero-content h1 { font-size: 26px !important; }
+    h1[style*="font-size: 72px"] { font-size: 30px !important; }
+    h2[style*="font-size: 36px"], h2[style*="font-size: 32px"] { font-size: 22px !important; }
+    .counter-grid { grid-template-columns: 1fr !important; }
+    .counter-item .count { font-size: 36px !important; }
+    .top-info span { font-size: 11px !important; }
+    .btn { padding: 10px 20px !important; font-size: 13px !important; }
+    .team-card, .profile-card { width: 100% !important; max-width: 280px !important; }
+    .nav-right .btn { padding: 8px 14px !important; font-size: 12px !important; }
+    .service-row { padding: 20px !important; }
+}
+
+/* =====================================================
+   MODERN TEAM SECTION — HOME PAGE
+   ===================================================== */
+.team-modern-section {
+    position: relative;
+    overflow: hidden;
+}
+.team-modern-section::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,86,179,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.team-modern-section::after {
+    content: "";
+    position: absolute;
+    bottom: -120px; left: -120px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,86,179,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.team-modern-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.team-modern-card {
+    flex: 0 0 calc(33.333% - 24px);
+    max-width: 320px;
+    min-width: 260px;
+}
+.team-modern-card {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    isolation: isolate;
+    padding: 14px 14px 0;
+}
+/* gradient border halo */
+.team-modern-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-color), #4aa8ff, transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.team-modern-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(0,86,179,0.08), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+.team-modern-card:hover {
+    transform: translateY(-14px);
+    box-shadow: 0 38px 72px rgba(0, 86, 179, 0.22);
+}
+.team-modern-card:hover::before,
+.team-modern-card:hover::after { opacity: 1; }
+
+.team-modern-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.05;
+    background: linear-gradient(135deg, #eef4ff 0%, #f7faff 100%);
+    border-radius: 18px;
+    z-index: 2;
+}
+.team-modern-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.6s ease;
+    display: block;
+}
+.team-modern-card:hover .team-modern-img-wrap img {
+    transform: scale(1.08);
+    filter: saturate(1.1);
+}
+
+.team-modern-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 16, 35, 0) 40%, rgba(10, 16, 35, 0.78) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 25px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.team-modern-card:hover .team-modern-overlay { opacity: 1; }
+
+.team-modern-socials {
+    display: flex;
+    gap: 12px;
+    transform: translateY(20px);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
+.team-modern-card:hover .team-modern-socials { transform: translateY(0); }
+
+.team-modern-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+.team-modern-socials a:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px) scale(1.05);
+}
+
+.team-modern-info {
+    text-align: center;
+    padding: 28px 22px 30px;
+    position: relative;
+    z-index: 2;
+}
+.team-modern-info::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%) scaleX(0.3);
+    width: 56px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #4aa8ff);
+    border-radius: 3px;
+    transform-origin: center;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0.6;
+}
+.team-modern-card:hover .team-modern-info::before {
+    transform: translateX(-50%) scaleX(1.4);
+    opacity: 1;
+}
+.team-modern-info h3 {
+    margin: 16px 0 8px;
+    font-size: 21px;
+    color: var(--secondary-color);
+    letter-spacing: 0.2px;
+    font-weight: 800;
+}
+.team-modern-info span {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* Responsive — team modern */
+@media (max-width: 991px) {
+    .team-modern-card { flex: 0 0 calc(50% - 18px); max-width: 320px; }
+}
+@media (max-width: 768px) {
+    .team-modern-grid { gap: 22px; }
+    .team-modern-card { flex: 0 0 calc(50% - 11px); min-width: 0; padding: 10px 10px 0; }
+    .team-modern-info { padding: 22px 14px 24px; }
+    .team-modern-info h3 { font-size: 17px; margin-top: 12px; }
+    .team-modern-info span { font-size: 11px; letter-spacing: 0.8px; }
+    .team-modern-socials a { width: 36px; height: 36px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+    .team-modern-card { flex: 0 0 100%; max-width: 340px; margin: 0 auto; }
+}
+
+
