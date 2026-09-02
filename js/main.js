@@ -93,9 +93,12 @@ gsap.to(".overlap-2", {
 
 // Counter Animation
 document.querySelectorAll('.count').forEach(counter => {
-    const target = +counter.innerText;
-    counter.innerText = '0';
-    
+    const raw = counter.innerText.trim();
+    const target = parseFloat(raw.replace(/,/g, ''));   // "25+" -> 25, "100%" -> 100, "168" -> 168
+    if (isNaN(target)) return;                           // non-numeric label: leave it untouched
+    const suffix = raw.replace(/[\d.,\s]/g, '');         // preserve trailing sign, e.g. "+", "%"
+    counter.innerText = '0' + suffix;
+
     ScrollTrigger.create({
         trigger: counter,
         start: "top 90%",
@@ -105,10 +108,10 @@ document.querySelectorAll('.count').forEach(counter => {
                 const speed = target / 50;
                 if (count < target) {
                     count += speed;
-                    counter.innerText = Math.ceil(count) + (target > 50 ? "+" : "");
+                    counter.innerText = Math.ceil(count) + suffix;
                     setTimeout(updateCount, 20);
                 } else {
-                    counter.innerText = target + (target > 50 ? "+" : "");
+                    counter.innerText = target + suffix;
                 }
             };
             updateCount();
