@@ -19,8 +19,10 @@ A fully responsive, multi-page marketing website built with vanilla HTML, CSS an
 - **Responsive design** — mobile, tablet and desktop layouts
 - **Scroll & entrance animations** — [AOS](https://michalsnik.github.io/aos/) and [GSAP ScrollTrigger](https://gsap.com/)
 - **SEO ready** — per-page meta tags, Open Graph / Twitter cards, and JSON-LD (`Organization`, `LocalBusiness`, `WebSite`) structured data
-- **Dedicated service pages** — IT Infrastructure, Networking, CCTV, Power, Solar, System, Cybersecurity, Fire Alarm and Outsourced Printing
-- **Reusable components** — shared header, footer and client-logo marquee across all pages
+- **Dedicated service pages** — IT Infrastructure, Networking, CCTV, Power, Solar, System, Cybersecurity and Fire Alarm
+- **Reusable components** — shared header, footer and client-logo marquee, consistent across all pages
+- **Consultancy CTA** — primary navigation button linking to the contact page
+- **Favicon & branding** — site favicon and logo served from `assets/logos/`
 
 ## Tech Stack
 
@@ -49,7 +51,6 @@ Trees-System-Solution/
 ├── system-solutions.html
 ├── cybersecurity-solutions.html
 ├── fire-alarm-system.html
-├── printing-solutions.html
 ├── news.html                     # News & Blog
 ├── contact.html                  # Contact & enquiry form
 ├── css/
@@ -57,9 +58,11 @@ Trees-System-Solution/
 ├── js/
 │   └── main.js
 ├── assets/
+│   ├── Home Page/                # Home hero, about-section & team images
+│   ├── service page/             # Per-service detail-page images
+│   ├── about us/                 # About page image
 │   ├── brands/                   # Client logos (1–14.png)
-│   ├── logos/                    # Trees System brand logo
-│   └── *.png, *.jfif             # Section & team images
+│   └── logos/                    # Brand logo + favicon
 └── README.md
 ```
 
@@ -87,6 +90,7 @@ Being a static site, it can be deployed to any static hosting provider (shared h
 ## Maintenance Notes
 
 - **Client logos** live in `assets/brands/` (`1.png … 14.png`) and are rendered as a duplicated set to power the seamless scrolling marquee — keep both copies in sync when adding or removing a logo.
+- **Image folders contain spaces** (`Home Page`, `service page`, `about us`); they are referenced in HTML using `%20` (e.g. `assets/Home%20Page/1.png`). Keep the folder names and references in sync.
 - **Placeholder/demo blocks** that are not yet populated with final content are disabled inside HTML comments tagged `[TREES-FLATU]`. Search the codebase for that tag to locate and re-enable them once real content is available.
 
 ## Contact
