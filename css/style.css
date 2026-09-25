@@ -212,6 +212,10 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.top-info span {
+    white-space: nowrap;
+}
+
 .top-info span i {
     margin-right: 8px;
     color: var(--primary-light);
