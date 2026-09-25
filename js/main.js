@@ -256,14 +256,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pdfBtn) {
         pdfBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Using window.print() as standard browser PDF generation
-            document.body.classList.add('print-mode');
-            window.print();
-            
-            // Remove class after a small delay to allow print dialog to capture it
-            setTimeout(() => {
-                document.body.classList.remove('print-mode');
-            }, 1000);
+            const content = document.querySelector('.service-main-content');
+            const pageTitle = document.title.split('|')[0].trim().replace(/\s+/g, '_').toLowerCase();
+            // Preferred: generate and download a real PDF via html2pdf
+            if (content && window.html2pdf) {
+                window.html2pdf().set({
+                    margin: 10,
+                    filename: pageTitle + '.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                }).from(content).save();
+            } else {
+                // Fallback: browser print-to-PDF dialog
+                document.body.classList.add('print-mode');
+                window.print();
+                setTimeout(() => { document.body.classList.remove('print-mode'); }, 1000);
+            }
         });
     }
 
